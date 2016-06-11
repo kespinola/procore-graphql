@@ -11,6 +11,7 @@ export default class Chatbox extends React.Component {
   }
 
   onInputText = (text) => {
+    this.props.client.say('#test2', text );
     console.log(text);
   }
 
