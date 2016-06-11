@@ -1,12 +1,15 @@
 import { Client } from 'irc';
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import sagaProvider from '../src/sagaProvider';
+import App from '../src/App';
 import './app.global.css';
+import { reducer as appReducer } from '../src/reducer';
+import sagas from '../src/sagas';
 
-const client = new Client('localhost', 'fae', {
-  userName: 'fae',
-  realName: 'Faris Mustafa',
+const client = new Client('localhost', 'Makina', {
+  userName: 'Makina',
+  realName: 'Remy Younes',
   port: 6667,
   debug: true,
   showErrors: true,
@@ -30,17 +33,15 @@ client.connect(1, () => {
 });
 
 // const store =
-
-const App = (props) => {
-  return (
-    <Provider store={store}>
-      <div />
-    </Provider>
-  );
-};
+const SagaApp = sagaProvider(
+  {
+    app: appReducer
+  },
+  sagas,
+  App
+);
 
 render(
-  // <App />,
-  <div />,
+  <SagaApp />,
   document.getElementById('root')
 );
