@@ -15,7 +15,7 @@ export default {
     }]
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../../dist'),
     filename: 'bundle.js',
   },
   resolve: {

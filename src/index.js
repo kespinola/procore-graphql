@@ -1,11 +1,16 @@
+import './styles/app.global.css';
+
 import React from 'react';
-import sagas from './sagas';
 import { render } from 'react-dom';
-import './app.global.css';
-import sagaProvider from './sagaProvider';
-import { reducer as appReducer } from './reducer';
+import { combineReducers } from 'redux';
 import { Client } from 'irc';
-import App from './App';
+
+import configureStore from './redux/utils/configureStore';
+import { reducer as appReducer } from './redux/modules/app';
+import App from './components/App.jsx';
+
+const reducer = combineReducers({ app: appReducer });
+const store = configureStore({}, reducer);
 
 const client = new Client('localhost', 'fae', {
   userName: 'fae',
@@ -17,25 +22,7 @@ const client = new Client('localhost', 'fae', {
   autoConnect: false,
 });
 
-client.connect(1, () => {
-  setTimeout(() => {
-    client.join('#test2');
-    // client.list();
-  }, 2000);
-});
-
-// const store =
-
-
-const SagaApp = sagaProvider(
-  {
-    app: appReducer
-  },
-  sagas,
-  App
-);
-
 render(
-  <SagaApp client={client} />,
+  <App store={store} client={client} />,
   document.getElementById('root')
 );

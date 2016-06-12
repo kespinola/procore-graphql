@@ -11,7 +11,7 @@ export default {
   output: {
     ...baseConfig.output,
     path: __dirname,
-    filename: './main.js'
+    filename: '../../main.js'
   },
 
   plugins: [
