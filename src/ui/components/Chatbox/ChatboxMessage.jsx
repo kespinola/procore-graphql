@@ -13,7 +13,7 @@ export default class ChatboxMessage extends React.Component {
 
     return (
       <div>{from}: {text}</div>
-    );
+    )
   }
 
 }

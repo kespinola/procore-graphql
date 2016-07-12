@@ -1,28 +1,26 @@
-import './styles/app.global.css';
+import './ui/styles/app.global.css'
 
-import React from 'react';
-import { render } from 'react-dom';
-import { combineReducers } from 'redux';
-import { Client } from 'irc';
+import React from 'react'
+import { render } from 'react-dom'
+import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
+import { reducer as localReducer } from 'redux-react-local'
 
-import configureStore from './redux/utils/configureStore';
-import { reducer as appReducer } from './redux/modules/app';
-import App from './components/App.jsx';
+import configureStore from './redux/utils/configureStore'
+import { reducer as appReducer } from './redux/modules/app'
+import { reducer as ircReducer } from './redux/modules/irc'
+import UserInterface from './ui/components/UI.jsx'
 
-const reducer = combineReducers({ app: appReducer });
-const store = configureStore({}, reducer);
+const reducer = combineReducers({
+  form: formReducer,
+  local: localReducer,
+  app: appReducer,
+  irc: ircReducer,
+})
 
-const client = new Client('localhost', 'fae', {
-  userName: 'fae',
-  realName: 'Faris Mustafa',
-  port: 6667,
-  debug: true,
-  showErrors: true,
-  channels: [],
-  autoConnect: false,
-});
+const store = configureStore({}, reducer)
 
 render(
-  <App store={store} client={client} />,
+  <UserInterface store={store} />,
   document.getElementById('root')
-);
+)

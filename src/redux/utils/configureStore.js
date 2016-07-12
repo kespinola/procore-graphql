@@ -1,13 +1,13 @@
-import { identity } from 'ramda';
-import { fromJS } from 'immutable';
-import { createStore, applyMiddleware } from 'redux';
-import createLogger from 'redux-logger';
-import createSagaMiddleware from 'redux-saga';
-import ensureFSAMiddleware from '@meadow/redux-ensure-fsa';
+import { identity } from 'ramda'
+import { fromJS } from 'immutable'
+import { createStore, applyMiddleware } from 'redux'
+import createLogger from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
+import ensureFSAMiddleware from '@meadow/redux-ensure-fsa'
 
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware()
 
-let middleware = [sagaMiddleware];
+let middleware = [sagaMiddleware]
 
 if (process.env.NODE_ENV !== 'production') {
   const loggerMiddleware = createLogger({
@@ -15,26 +15,26 @@ if (process.env.NODE_ENV !== 'production') {
     actionTransformer: object => fromJS(object).toJS(),
     collapsed: true,
     logErrors: false,
-  });
+  })
 
-  const fsaMiddleware = ensureFSAMiddleware({
-    ignore: (action) => {
-      return false;
-    }
-  });
+  // const fsaMiddleware = ensureFSAMiddleware({
+  //   ignore: (action) => {
+  //     return false
+  //   }
+  // })
 
-  middleware = [...middleware, loggerMiddleware, fsaMiddleware];
+  middleware = [...middleware, loggerMiddleware]
 }
 
-const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore)
 
 const configureStore = (initialState = {}, reducer = identity) => {
-  const store = createStoreWithMiddleware(reducer, initialState);
+  const store = createStoreWithMiddleware(reducer, initialState)
 
   return {
     ... store,
     runSaga: sagaMiddleware.run,
-  };
-};
+  }
+}
 
-export default configureStore;
+export default configureStore
