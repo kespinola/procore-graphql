@@ -47,18 +47,22 @@ export default class Register extends React.Component {
       fields,
       fields: { username, email, password, password2 },
       handleSubmit,
+      onClickLogin,
       valid,
     } = this.props
 
     return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <ReduxFormErrors {...{ error, fields }} />
-        <input type="text" placeholder="Username" {...username} />
-        <input type="text" placeholder="Email Address" {...email} />
-        <input type="password" placeholder="Password" {...password} />
-        <input type="password" placeholder="Password Confirmation" {...password2} />
-        <input type="submit" value="Register" disabled={!valid} />
-      </form>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <ReduxFormErrors {...{ error, fields }} />
+          <input type="text" placeholder="Username" {...username} />
+          <input type="text" placeholder="Email Address" {...email} />
+          <input type="password" placeholder="Password" {...password} />
+          <input type="password" placeholder="Password Confirmation" {...password2} />
+          <input type="submit" value="Register" disabled={!valid} />
+        </form>
+        <a onClick={onClickLogin}>Back to Login</a>
+      </div>
     )
   }
 

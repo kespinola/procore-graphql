@@ -38,15 +38,19 @@ export default class Login extends React.Component {
       fields,
       fields: { email },
       handleSubmit,
+      onClickLogin,
       valid,
     } = this.props
 
     return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <ReduxFormErrors {...{ fields }} />
-        <input type="text" placeholder="Email Address" {...email} />
-        <input type="submit" value="Login" disabled={!valid} />
-      </form>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <ReduxFormErrors {...{ fields }} />
+          <input type="text" placeholder="Email Address" {...email} />
+          <input type="submit" value="Login" disabled={!valid} />
+        </form>
+        <a onClick={onClickLogin}>Back to Login</a>
+      </div>
     )
   }
 

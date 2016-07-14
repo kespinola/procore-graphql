@@ -29,17 +29,29 @@ export default class LoginPortal extends React.Component {
   static defaultProps = {
   };
 
-  render() {
-    const { state } = this.props
-    const view = get(state, 'view')
+  onClickForgotPassword = () => this.props.actions.setView(FORGOT_PASSWORD)
 
-    console.log(view);
+  onClickLogin = () => this.props.actions.setView(LOGIN_VIEW)
+
+  onClickRegister = () => this.props.actions.setView(REGISTER_VIEW)
+
+  render() {
+    const {
+      onClickForgotPassword,
+      onClickLogin,
+      onClickRegister,
+      props: {
+        state,
+      },
+    } = this
+
+    const view = get(state, 'view')
 
     return (
       <div>
-        {view === LOGIN_VIEW && <Login />}
-        {view === REGISTER_VIEW && <Register />}
-        {view === FORGOT_PASSWORD && <ForgotPassword />}
+        {view === LOGIN_VIEW && <Login {...{ onClickRegister, onClickForgotPassword }} />}
+        {view === REGISTER_VIEW && <Register {...{ onClickLogin }} />}
+        {view === FORGOT_PASSWORD && <ForgotPassword {...{ onClickLogin }} />}
       </div>
     )
   }
