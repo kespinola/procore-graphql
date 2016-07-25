@@ -11,8 +11,19 @@ const validate = ({ email }) => {
   return errors
 }
 
-const onSubmit = (values) => {
-  console.log(values)
+const onSubmit = async (values) => {
+  try {
+    const response = await fetch('http://localhost:8080/reset-pw', {
+      method: 'post',
+      body: JSON.stringify(values),
+    })
+
+    if (response.status !== 200) {
+
+    }
+  } catch (e) {
+    console.error('reset password error', e)
+  }
 }
 
 @reduxForm({
@@ -47,7 +58,7 @@ export default class Login extends React.Component {
         <form onSubmit={handleSubmit(onSubmit)}>
           <ReduxFormErrors {...{ fields }} />
           <input type="text" placeholder="Email Address" {...email} />
-          <input type="submit" value="Login" disabled={!valid} />
+          <input type="submit" value="Reset Password" disabled={!valid} />
         </form>
         <a onClick={onClickLogin}>Back to Login</a>
       </div>
