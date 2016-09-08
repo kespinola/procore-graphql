@@ -18,6 +18,17 @@
     "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
     "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\""
   },
+  "browserify": {
+    "transform": [
+      "glslify"
+    ]
+  },
+  "glslify": {
+    "transform": [
+      "glslify-fancy-imports",
+      "glslify-hex"
+    ]
+  },
   "bin": {
     "electron": "./node_modules/.bin/electron"
   },
@@ -67,6 +78,7 @@
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "fbjs-scripts": "^0.7.1",
+    "glslify": "^5.1.0",
     "jsdom": "^9.2.0",
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
@@ -82,6 +94,7 @@
     "sinon": "^1.17.4",
     "slate-irc": "^0.8.1",
     "style-loader": "^0.13.1",
+    "three-vignette-background": "^1.0.2",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
@@ -95,7 +108,11 @@
     "electron-debug": "^1.0.0",
     "flyd": "^0.2.2",
     "font-awesome": "^4.6.3",
+    "glsl-noise": "0.0.0",
+    "glslify-hex": "^2.0.1",
+    "ify-loader": "^1.0.3",
     "irc": "^0.5.0",
+    "keymaster": "^1.6.2",
     "mori": "^0.3.2",
     "postcss": "^5.0.21",
     "ramda": "^0.21.0",
@@ -112,6 +129,9 @@
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.1",
     "source-map-support": "^0.4.0",
+    "three": "^0.80.1",
+    "three-orbit-controls": "^72.0.0",
+    "three-orbit-viewer": "^69.3.0",
     "uuid": "^2.0.2"
   },
   "devEngines": {

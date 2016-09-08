@@ -9,6 +9,10 @@ import { saga as ircSaga } from '../../redux/modules/irc'
 import Chatbox from './Chatbox'
 import LoginPortal from './LoginPortal'
 
+const dgram = require('dgram')
+const message = Buffer.from('Some bytes')
+const client = dgram.createSocket('udp4')
+
 function* sagas() {
   yield* appSaga()
   yield* ircSaga()
@@ -45,6 +49,12 @@ export default class App extends React.Component {
         <div>
           <Chatbox />
           <LoginPortal />
+          <button onClick={() => {
+            client.send(message, 8081, '192.168.99.100', (err) => {
+              console.log(err)
+              // client.close()
+            })
+          }}>send msg</button>
         </div>
       </Root>
     )

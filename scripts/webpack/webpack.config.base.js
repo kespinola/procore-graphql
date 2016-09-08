@@ -12,6 +12,13 @@ export default {
     }, {
       test: /\.node$/,
       loader: 'node-loader'
+    }, {
+      test: /node_modules/,
+      loader: 'ify'
+    }],
+    postLoaders: [{
+      test: /\.js$/,
+      loader: 'ify'
     }]
   },
   output: {
