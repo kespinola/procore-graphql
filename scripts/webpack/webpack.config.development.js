@@ -1,5 +1,5 @@
-import webpack from 'webpack';
-import baseConfig from './webpack.config.base';
+import webpack from 'webpack'
+import baseConfig from './webpack.config.base'
 
 const config = {
   ...baseConfig,
@@ -10,12 +10,12 @@ const config = {
 
   entry: [
     'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
-    './src/index'
+    './src/index',
   ],
 
   output: {
     ...baseConfig.output,
-    publicPath: 'http://localhost:3000/dist/'
+    publicPath: 'http://localhost:3000/dist/',
   },
 
   module: {
@@ -23,21 +23,12 @@ const config = {
 
     loaders: [
       ...baseConfig.module.loaders,
+
       {
-        test: /\.global\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?sourceMap'
-        ]
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
       },
-      {
-        test: /^((?!\.global).)*\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-        ]
-      }
-    ]
+    ],
   },
 
   plugins: [
@@ -47,12 +38,12 @@ const config = {
     new webpack.DefinePlugin({
       __DEV__: true,
       'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
-    })
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
   ],
 
-  target: 'electron-renderer'
-};
+  target: 'electron-renderer',
+}
 
-export default config;
+export default config
