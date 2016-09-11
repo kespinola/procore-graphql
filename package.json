@@ -2,10 +2,10 @@
   "name": "client",
   "productName": "Client",
   "version": "0.0.1",
-  "description": "Client for gameserver",
+  "description": "Client for game",
   "main": "main.js",
   "scripts": {
-    "typings-install": "typings install",
+    "typings": "typings install",
     "test": "NODE_ENV=test mocha --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
     "test-watch": "npm test -- --watch",
     "test-e2e": "NODE_ENV=test mocha --compilers js:babel-register --require ./test/setup.js --require co-mocha ./test/e2e.js",
@@ -78,7 +78,7 @@
     "node-libs-browser": "^1.0.0",
     "node-sass": "^3.9.3",
     "postcss": "^5.2.0",
-    "react-addons-test-utils": "^15.1.0",
+    "react-addons-test-utils": "^15.3.1",
     "react-css-modules": "^3.7.10",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
@@ -102,12 +102,10 @@
   "dependencies": {
     "font-awesome": "^4.6.3",
     "irc": "^0.5.0",
-    "keymaster": "^1.6.2",
     "mocha": "^3.0.2",
     "mori": "^0.3.2",
     "ramda": "^0.22.1",
     "react": "^15.3.1",
-    "react-addons-test-utils": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-mori-proptypes": "0.0.5",
     "recompose": "^0.20.2",
@@ -116,11 +114,10 @@
     "redux-form": "^6.0.2",
     "redux-saga": "^0.11.1",
     "reselect": "^2.5.3",
-    "three": "^0.80.1",
     "uuid": "^2.0.2"
   },
   "devEngines": {
-    "node": "4.x || 5.x || 6.x",
-    "npm": "2.x || 3.x"
+    "node": "5.x || 6.x",
+    "npm": "3.x"
   }
 }
