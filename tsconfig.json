@@ -10,8 +10,6 @@
     "experimentalDecorators": true
   },
   "files": [
-    "./typings/index.d.ts",
-    "./src/three/components/BoxGeometry.tsx",
-    "./src/three/index.ts"
+    "./typings/index.d.ts"
   ]
 }
