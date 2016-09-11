@@ -10,8 +10,9 @@ export default {
       test: /\.json$/,
       loader: 'json-loader',
     }, {
-      test: /\.node$/,
-      loader: 'node-loader',
+      test: /\.tsx?/,
+      loader: 'babel!ts-loader',
+      exclude: /node_modules/,
     }],
   },
   output: {
@@ -19,7 +20,7 @@ export default {
     filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.node'],
+    extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
   },
   plugins: [
