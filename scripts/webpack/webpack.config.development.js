@@ -1,7 +1,8 @@
 import webpack from 'webpack'
+
 import baseConfig from './webpack.config.base'
 
-const config = {
+export default {
   ...baseConfig,
 
   debug: true,
@@ -45,5 +46,3 @@ const config = {
 
   target: 'electron-renderer',
 }
-
-export default config
