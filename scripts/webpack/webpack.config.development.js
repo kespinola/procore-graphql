@@ -12,6 +12,7 @@ export default {
   entry: [
     'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
     './src/index',
+    './src/index.scss',
   ],
 
   output: {
