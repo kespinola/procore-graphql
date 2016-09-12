@@ -1,8 +1,9 @@
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+
 import baseConfig from './webpack.config.base'
 
-const config = {
+export default {
   ...baseConfig,
 
   devtool: 'source-map',
@@ -56,5 +57,3 @@ const config = {
 
   target: 'electron-renderer',
 }
-
-export default config
