@@ -50,10 +50,21 @@ export default class Scene extends React.Component {
       onAnimate,
     } = this
 
+    const camera = <perspectiveCamera
+      ref="camera"
+      name="camera"
+      fov={75}
+      aspect={width / height}
+      near={0.1}
+      far={1000}
+      position={cameraPosition}
+    />
+
     return (<React3 {...{ mainCamera: 'camera', width, height, onAnimate, antialias: true }}>
       <scene>
+        {camera}
         <axisHelper />
-        <OrbitControls {...{ width, height, position: cameraPosition }} />
+        <OrbitControls {...{ width, height, position: cameraPosition, camera: camera }} />
         <mesh {...{ rotation: cubeRotation }}>
           <sphereGeometry {...{ radius: 1, widthSegments: 10, heightSegments: 10 }} />
           <meshBasicMaterial {...{ color: 0xff0000, wireframe: true }} />
