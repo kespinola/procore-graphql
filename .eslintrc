@@ -13,9 +13,9 @@
     "comma-dangle": 2,
     "no-console": 0,
     "no-use-before-define": 0,
-    "import/no-unresolved": [2, { ignore: ['electron'] }],
     "import/no-extraneous-dependencies": 0,
     "react/jsx-no-bind": 0,
+    "react/jsx-sort-props": 0,
     "react/jsx-first-prop-new-line": 0,
     "react/jsx-closing-bracket-location": 0,
     "react/prefer-stateless-function": 0
@@ -25,6 +25,9 @@
     "react"
   ],
   "settings": {
-    "import/resolver": "webpack"
+    "import/resolver": "webpack",
+    "import/core-modules": ['electron'],
+    "import/extensions": ['.js', '.jsx'],
+    "import/ignore": ['\.coffee$', '\.(scss|less|css)']
   }
 }

@@ -5,8 +5,6 @@ import baseConfig from './webpack.config.base'
 export default {
   ...baseConfig,
 
-  debug: true,
-
   devtool: 'cheap-module-eval-source-map',
 
   entry: [
@@ -23,12 +21,12 @@ export default {
   module: {
     ...baseConfig.module,
 
-    loaders: [
-      ...baseConfig.module.loaders,
+    rules: [
+      ...baseConfig.module.rules,
 
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },

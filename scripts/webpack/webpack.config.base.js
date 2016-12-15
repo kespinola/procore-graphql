@@ -1,18 +1,22 @@
+import webpack from 'webpack'
 import path from 'path'
 
 export default {
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
       loader: 'babel-loader',
+      exclude: /node_modules/,
+    }, {
+      test: /\.tsx?/,
+      loader: 'babel-loader!ts-loader',
       exclude: /node_modules/,
     }, {
       test: /\.json$/,
       loader: 'json-loader',
     }, {
-      test: /\.tsx?/,
-      loader: 'babel!ts-loader',
-      exclude: /node_modules/,
+      test: /\.md$/,
+      loader: 'ignore-loader',
     }],
   },
   output: {
@@ -20,11 +24,14 @@ export default {
     filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
-    packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    mainFields: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
   },
   plugins: [
+    new webpack.DefinePlugin({ 'global.GENTLY': false }),
   ],
-  externals: [
-  ],
+  node: {
+    ws: 'empty',
+    __dirname: true,
+  },
 }
