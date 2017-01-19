@@ -23,7 +23,7 @@ export default {
     }),
     new webpack.BannerPlugin(
       'require("source-map-support").install()',
-      { raw: true, entryOnly: false }
+      { raw: true, entryOnly: false },
     ),
     new webpack.DefinePlugin({
       'process.env': {
@@ -41,7 +41,6 @@ export default {
 
   externals: [
     ...baseConfig.externals,
-    'font-awesome',
     'source-map-support',
   ],
 }

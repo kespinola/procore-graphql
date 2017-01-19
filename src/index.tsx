@@ -1,12 +1,11 @@
-// import * as React from 'react'
-// import { Client } from 'discord.js'
+import * as React from 'react'
+import * as DOM from 'react-dom'
+import * as redux from 'redux'
 
-// import * as React from 'react'
-// import * as DOM from 'react-dom'
-// import * as redux from 'redux'
+function Component(props: any) {
+  return (
+    <div />
+  )
+}
 
-const discord = require('discord.js')
-
-console.log(discord)
-
-// console.log(discord)
+DOM.render(<Component />, document.getElementById('root'))
